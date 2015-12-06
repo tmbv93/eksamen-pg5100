@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+<ui:composition template="../template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <p:messages/>
+            <br/>
+            <h:outputLabel for="title" value="Title"/>
+            <h:inputText id="title" value="#{eventController.event.title}"/>
+            <br/>
+            <h:outputLabel for="description" value="Description"/>
+            <h:inputTextarea id="description" value="#{eventController.event.description}"/>
+            <br/>
+            <h:outputLabel for="type" value="Type"/>
+            <h:selectOneMenu id="type" value="#{eventController.event.type}">
+                <f:selectItems value="#{eventController.getEventTypes()}"/>
+            </h:selectOneMenu>
+            <br/>
+            <h:outputLabel for="subject" value="Subject"/>
+            <h:selectOneMenu id="subject" value="#{eventController.subjectId}">
+                <f:selectItems value="#{eventController.getAvailableSubjects()}"/>
+            </h:selectOneMenu>
+            <br/>
+
+            <div id="datetimepicker" class="input-append date">
+                <h:outputLabel for="startTime" value="Event start"/>
+                <h:inputText id="startTime" value="#{eventController.event.startTime}">
+                    <f:convertDateTime pattern="dd-MM-yyyy HH:mm"/>
+                </h:inputText>
+                <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+            </div>
+            <br/>
+            <div id="datetimepicker2" class="input-append date">
+                <h:outputLabel for="endTime" value="Event end"/>
+                <h:inputText id="endTime" value="#{eventController.event.endTime}">
+                    <f:convertDateTime pattern="dd-MM-yyyy HH:mm"/>
+                </h:inputText>
+                <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+            </div>
+            <br/>
+            <h:commandButton value="Submit" action="#{eventController.persist()}"/>
+        </h:form>
+
+        <script type="text/javascript"
+                src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+        </script>
+        <script type="text/javascript">
+            $('#datetimepicker').datetimepicker({
+                format: 'dd-MM-yyyy HH:mm'
+            });
+
+            $('#datetimepicker2').datetimepicker({
+                format: 'dd-MM-yyyy HH:mm'
+            });
+
+
+        </script>
+
+    </ui:define>
+</ui:composition>
+
+</html>

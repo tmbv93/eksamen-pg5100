@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Eksamen i PG5100</title>
+    <!-- Twitter Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"/>
+    <h:outputStylesheet library="vendor" name="bootstrap-3.3.6-dist/css/bootstrap.min.css"/>
+
+    <!-- Datepicker -->
+    <h:outputStylesheet library="vendor" name="bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css"/>
+
+    <h:outputStylesheet name="app.css"/>
+</h:head>
+<h:body>
+    <h:form>
+        <p:menubar>
+            <p:submenu label="User">
+                <p:menuitem value="New" url="/user/user-registration.jsf"/>
+                <p:menuitem value="List" url="/user/users.jsf"/>
+            </p:submenu>
+            <p:submenu label="Subject">
+                <p:menuitem value="New" url="/subject/subject-registration.jsf"/>
+                <p:menuitem value="List" url="/subject/subjects.jsf"/>
+            </p:submenu>
+            <p:submenu label="Event">
+                <p:menuitem value="New" url="/event/event-registration.jsf"/>
+                <p:menuitem value="List" url="/event/events.jsf"/>
+            </p:submenu>
+            <p:menuitem value="New location" url="/location/location-registration.jsf"/>
+        </p:menubar>
+    </h:form>
+    <br/>
+    <ui:insert name="content">Default content</ui:insert>
+    <br/>
+
+    <p style="text-align: center">&copy; Jarle Hansen</p>
+
+    <!-- Bootstrap js -->
+    <h:outputScript library="vendor" name="bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js"/>
+    <h:outputScript library="vendor" name="bootstrap-3.3.6-dist/js/bootstrap.js"/>
+
+</h:body>
+</html>
